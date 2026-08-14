@@ -1,0 +1,31 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.lumi.fpsaddons'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.lumi.fpsaddons"
+        minSdk 24        // Android 7.0+ — bao phủ hầu hết máy chơi Minecraft PE
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'com.google.android.material:material:1.11.0'
+
+    // Thư viện Shizuku — kiểm tra bản mới nhất tại github.com/RikkaApps/Shizuku-API
+    implementation 'dev.rikka.shizuku:api:13.1.5'
+    implementation 'dev.rikka.shizuku:provider:13.1.5'
+}
