@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Cần để đọc file addon người dùng chọn (chọn qua file picker, không cần MANAGE_EXTERNAL_STORAGE) -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
 
     <application
         android:allowBackup="true"
-        android:label="Lumi Addons FPS"
+        android:label="FPS Vietnamese"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.AppCompat.Light">
 
         <activity
@@ -18,10 +22,6 @@
             </intent-filter>
         </activity>
 
-        <!--
-          Provider bắt buộc để Shizuku hoạt động trên Android < 13.
-          authorities PHẢI trùng package name của app + ".shizuku"
-        -->
         <provider
             android:name="rikka.shizuku.ShizukuProvider"
             android:authorities="com.lumi.fpsaddons.shizuku"
