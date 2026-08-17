@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.LumiDark" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/bg_dark</item>
+        <item name="android:statusBarColor">@color/bg_dark</item>
+        <item name="android:navigationBarColor">@color/bg_dark</item>
+        <item name="colorPrimaryDark">@color/bg_dark</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+    </style>
+
+    <style name="LumiDialogTheme" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:background">@color/bg_panel</item>
+        <item name="android:textColorPrimary">@color/text_light</item>
+        <item name="android:textColor">@color/text_light</item>
+        <item name="colorAccent">@color/neon_pink</item>
+    </style>
+
+    <style name="LumiButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:background">@drawable/btn_neon</item>
+        <item name="android:textColor">@color/text_light</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:elevation">10dp</item>
+        <item name="android:outlineProvider">background</item>
+    </style>
+
+    <style name="LumiButtonDisabled" parent="LumiButton">
+        <item name="android:background">@drawable/btn_disabled</item>
+        <item name="android:textColor">#FF3B30</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+
+</resources>
