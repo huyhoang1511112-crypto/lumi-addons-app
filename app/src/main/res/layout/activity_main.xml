@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_app"
+    android:background="@color/bg_dark"
     android:fillViewport="true">
 
 <LinearLayout
@@ -16,18 +16,27 @@
         android:layout_height="72dp"
         android:layout_gravity="center_horizontal"
         android:src="@mipmap/ic_launcher"
-        android:contentDescription="Lumi Addons logo" />
+        android:contentDescription="FPS Vietnamese logo" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
-        android:text="LUMI ADDONS"
+        android:text="FPS VIETNAMESE"
         android:textColor="@color/text_light"
         android:textSize="22sp"
         android:textStyle="bold"
         android:letterSpacing="0.15" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="2dp"
+        android:text="Đối tác sáng tạo Free Fire — tối ưu hiệu năng"
+        android:textColor="@color/text_dim"
+        android:textSize="11sp" />
 
     <TextView
         android:id="@+id/tvStatus"
@@ -42,69 +51,77 @@
 
     <Button
         android:id="@+id/btnRequestPermission"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:background="@drawable/btn_neon"
-        android:text="Xin quyền Shizuku"
-        android:textColor="@color/text_light"
-        android:textAllCaps="false"
-        android:textSize="15sp" />
+        style="@style/LumiButton"
+        android:text="Xin quyền Shizuku" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="6dp"
+        android:text="TỐI ƯU FPS — CẦN SHIZUKU"
+        android:textColor="@color/neon_pink_soft"
+        android:textSize="12sp"
+        android:letterSpacing="0.15" />
 
     <Button
-        android:id="@+id/btnImportAddon"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:id="@+id/btnQuickFix"
+        style="@style/LumiButton"
+        android:text="⚡ Fix Lag FPS (1 chạm)" />
+
+    <Button
+        android:id="@+id/btnBoostScreen"
+        style="@style/LumiButton"
         android:layout_marginTop="12dp"
-        android:background="@drawable/btn_neon"
-        android:text="Nhập Addon Minecraft"
-        android:textColor="@color/text_light"
-        android:textAllCaps="false"
-        android:textSize="15sp" />
+        android:text="📺 Buff Màn" />
 
     <Button
         android:id="@+id/btnCleanRam"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
+        style="@style/LumiButton"
         android:layout_marginTop="12dp"
-        android:background="@drawable/btn_neon"
-        android:text="🧹 Dọn RAM"
-        android:textColor="@color/neon_pink"
-        android:textAllCaps="false"
-        android:textStyle="bold"
-        android:textSize="15sp" />
+        android:text="🧹 Dọn RAM" />
 
     <Button
         android:id="@+id/btnClearCache"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
+        style="@style/LumiButton"
         android:layout_marginTop="12dp"
-        android:background="@drawable/btn_neon"
-        android:text="Xoá cache Minecraft"
-        android:textColor="@color/text_light"
-        android:textAllCaps="false"
-        android:textSize="15sp" />
+        android:text="Xoá cache (chọn app)" />
 
     <Button
         android:id="@+id/btnOptimize"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
+        style="@style/LumiButton"
         android:layout_marginTop="12dp"
-        android:background="@drawable/btn_neon"
-        android:text="Tắt animation hệ thống"
-        android:textColor="@color/text_light"
-        android:textAllCaps="false"
-        android:textSize="15sp" />
+        android:text="Tắt animation hệ thống" />
 
     <Button
         android:id="@+id/btnDpi"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
+        style="@style/LumiButton"
         android:layout_marginTop="12dp"
-        android:background="@drawable/btn_neon"
-        android:text="Chỉnh DPI màn hình"
-        android:textColor="@color/text_light"
-        android:textAllCaps="false"
-        android:textSize="15sp" />
+        android:text="Chỉnh DPI màn hình" />
+
+    <Button
+        android:id="@+id/btnGameMode"
+        style="@style/LumiButton"
+        android:layout_marginTop="12dp"
+        android:text="Bật Game Mode hiệu năng" />
+
+    <Button
+        android:id="@+id/btnSustainedPerf"
+        style="@style/LumiButton"
+        android:layout_marginTop="12dp"
+        android:text="Bật hiệu năng ổn định" />
+
+    <Button
+        android:id="@+id/btnBatterySaver"
+        style="@style/LumiButton"
+        android:layout_marginTop="12dp"
+        android:text="Tắt tiết kiệm pin tạm thời" />
+
+    <Button
+        android:id="@+id/btnGpuRender"
+        style="@style/LumiButton"
+        android:layout_marginTop="12dp"
+        android:text="Ép vẽ bằng GPU" />
 
     <TextView
         android:layout_width="wrap_content"
