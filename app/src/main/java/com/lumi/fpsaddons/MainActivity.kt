@@ -13,6 +13,7 @@ import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import rikka.shizuku.Shizuku
 
 class MainActivity : AppCompatActivity() {
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvStatus: TextView
     private lateinit var tvLog: TextView
     private lateinit var featureButtons: List<Button>
+    private lateinit var btnComboBoost: Button
 
     private val permissionListener = Shizuku.OnRequestPermissionResultListener { _, grantResult ->
         applyPermissionUI()
@@ -32,13 +34,14 @@ class MainActivity : AppCompatActivity() {
 
         tvStatus = findViewById(R.id.tvStatus)
         tvLog = findViewById(R.id.tvLog)
+        btnComboBoost = findViewById(R.id.btnComboBoost)
 
         Shizuku.addRequestPermissionResultListener(permissionListener)
 
         featureButtons = listOf(
             R.id.btnQuickFix, R.id.btnBoostScreen, R.id.btnCleanRam, R.id.btnClearCache,
             R.id.btnOptimize, R.id.btnDpi, R.id.btnGameMode, R.id.btnSustainedPerf,
-            R.id.btnBatterySaver, R.id.btnGpuRender
+            R.id.btnBatterySaver, R.id.btnGpuRender, R.id.btnComboBoost
         ).map { findViewById<Button>(it) }
 
         setupButtons()
@@ -47,12 +50,14 @@ class MainActivity : AppCompatActivity() {
 
         applyPermissionUI()
         updateStatus()
+        updateComboBoostButtonText()
     }
 
     override fun onResume() {
         super.onResume()
         applyPermissionUI()
         updateStatus()
+        updateComboBoostButtonText()
     }
 
     private fun applyPermissionUI() {
@@ -114,6 +119,34 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnGpuRender).setOnClickListener {
             log(ShellOptimizer.forceGpuRendering())
         }
+
+        btnComboBoost.setOnClickListener { toggleComboBoost() }
+    }
+
+    private fun toggleComboBoost() {
+        if (AntiGhostTouch.isRunning()) {
+            log(ShellOptimizer.stopComboBoost())
+        } else {
+            val points = listOf(
+                AntiGhostTouch.TapPoint(3005, 788),
+                AntiGhostTouch.TapPoint(3000, 1000),
+                AntiGhostTouch.TapPoint(2729, 1061)
+            )
+            log(
+                ShellOptimizer.startComboBoost(
+                    refreshRate = 120f,
+                    touchPoints = points,
+                    touchIntervalMs = 3000,
+                    scope = lifecycleScope
+                )
+            )
+        }
+        updateComboBoostButtonText()
+    }
+
+    private fun updateComboBoostButtonText() {
+        btnComboBoost.text = if (AntiGhostTouch.isRunning())
+            "Tắt Combo Boost" else "Bật Combo Boost (Buff Màn + Chống liệt)"
     }
 
     private fun showCleanRamDialog() {
@@ -205,6 +238,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         Shizuku.removeRequestPermissionResultListener(permissionListener)
+        AntiGhostTouch.stop()
         super.onDestroy()
     }
 
