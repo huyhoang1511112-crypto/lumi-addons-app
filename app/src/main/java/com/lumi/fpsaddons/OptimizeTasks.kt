@@ -46,4 +46,20 @@ object OptimizeTasks {
         val cmds = packageNames.joinToString(" ; ") { "am force-stop $it" }
         return ShizukuHelper.runCommand(cmds)
     }
+
+    /**
+     * Xoá cache cho danh sách app do người dùng chọn (chỉ xoá thư mục cache
+     * bên ngoài, KHÔNG dùng "pm clear" vì lệnh đó xoá sạch data app —
+     * mất đăng nhập, mất tiến trình game... rất nguy hiểm).
+     */
+    fun clearCacheForApps(packageNames: List<String>): String {
+        val log = StringBuilder()
+        for (pkg in packageNames) {
+            val cacheDir = "/storage/emulated/0/Android/data/$pkg/cache"
+            val result = ShizukuHelper.runCommand("rm -rf $cacheDir/* 2>/dev/null; echo OK")
+            log.appendLine("- $pkg: $result")
+        }
+        log.appendLine("=== Đã xoá cache xong ===")
+        return log.toString()
+    }
 }
