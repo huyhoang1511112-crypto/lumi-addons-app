@@ -30,9 +30,6 @@ object ShellOptimizer {
     fun resetGpuRendering(): String =
         ShizukuHelper.runCommand("settings put global force_gpu_rendering 0")
 
-    /**
-     * "Buff Màn" — ép tần số quét màn hình lên mức cao nhất máy hỗ trợ.
-     */
     fun boostRefreshRate(rate: Float = 120f): String =
         ShizukuHelper.runCommand(
             "settings put system peak_refresh_rate $rate && settings put system min_refresh_rate $rate"
@@ -46,7 +43,6 @@ object ShellOptimizer {
     fun quickFixLag(): String {
         val log = StringBuilder()
         log.appendLine("--- Tắt animation hệ thống ---")
-        // Lưu ý: Đảm bảo class OptimizeTasks đã được định nghĩa trong project của bạn
         log.appendLine(OptimizeTasks.disableSystemAnimations())
         log.appendLine("--- Bật Game Mode hiệu năng (Free Fire) ---")
         log.appendLine(enableGamePerformanceMode())
@@ -60,12 +56,9 @@ object ShellOptimizer {
         return log.toString()
     }
 
-    /**
-     * Gộp "Buff Màn" (tần số quét) + "Chống liệt cảm ứng" vào 1 công tắc
-     * duy nhất — tiện cho người dùng thao tác 1 tay/khó bấm nhiều nút.
-     */
     fun startComboBoost(
         refreshRate: Float = 120f,
+        touchPoints: List<AntiGhostTouch.TapPoint>,
         touchIntervalMs: Long = 3000,
         scope: kotlinx.coroutines.CoroutineScope
     ): String {
@@ -73,10 +66,7 @@ object ShellOptimizer {
         log.appendLine("--- Buff tần số quét màn hình ---")
         log.appendLine(boostRefreshRate(refreshRate))
         log.appendLine("--- Bật chống liệt cảm ứng ---")
-        
-        // Gọi hàm start mới đã bỏ touchPoints
-        AntiGhostTouch.start(scope, touchIntervalMs)
-        
+        AntiGhostTouch.start(touchPoints, touchIntervalMs, scope)
         log.appendLine("Đã bật.")
         return log.toString()
     }
