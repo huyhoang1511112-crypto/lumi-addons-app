@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_home" android:title="Tối ưu" android:icon="@drawable/ic_bolt" />
+    <item android:id="@+id/nav_fps" android:title="Đo FPS" android:icon="@drawable/ic_display" />
+    <item android:id="@+id/nav_device" android:title="Máy" android:icon="@drawable/ic_display" />
+    <item android:id="@+id/nav_ram" android:title="RAM" android:icon="@drawable/ic_broom" />
+    <item android:id="@+id/nav_log" android:title="Log" android:icon="@drawable/ic_broom" />
+</menu>
