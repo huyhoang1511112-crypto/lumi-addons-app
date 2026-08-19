@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.lumi.fpsaddons"
-        minSdk 24        // Android 7.0+ — bao phủ hầu hết máy chơi Minecraft PE
+        minSdk 24
         targetSdk 34
         versionCode 1
         versionName "1.0"
@@ -33,12 +33,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.fragment:fragment-ktx:1.6.2'
 
-    // Thư viện Shizuku — kiểm tra bản mới nhất tại github.com/RikkaApps/Shizuku-API
     implementation 'dev.rikka.shizuku:api:13.1.5'
     implementation 'dev.rikka.shizuku:provider:13.1.5'
-
-    // Coroutines — cần cho AntiGhostTouch (vòng lặp chạy nền) và lifecycleScope
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
 }
