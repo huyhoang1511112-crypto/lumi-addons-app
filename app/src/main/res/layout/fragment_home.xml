@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:fillViewport="true">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Trạng thái Shizuku: chưa kiểm tra"
+        android:textColor="@color/text_dim"
+        android:textSize="13sp"
+        android:gravity="center" />
+
+    <Button
+        android:id="@+id/btnRequestPermission"
+        style="@style/LumiButton"
+        android:layout_marginTop="8dp"
+        android:text="Xin quyền Shizuku" />
+
+    <TextView style="@style/SectionTitle"
+        android:layout_marginTop="20dp"
+        android:text="TỐI ƯU HIỆU NĂNG" />
+
+    <Button
+        android:id="@+id/btnQuickFix"
+        style="@style/LumiButton"
+        android:layout_marginTop="6dp"
+        android:drawableStart="@drawable/ic_bolt"
+        android:drawablePadding="10dp"
+        android:text="Fix Lag FPS (1 chạm)" />
+
+    <Button
+        android:id="@+id/btnGameMode"
+        style="@style/LumiButton"
+        android:layout_marginTop="8dp"
+        android:text="Bật Game Mode hiệu năng" />
+
+    <Button
+        android:id="@+id/btnSustainedPerf"
+        style="@style/LumiButton"
+        android:layout_marginTop="8dp"
+        android:text="Bật hiệu năng ổn định" />
+
+    <Button
+        android:id="@+id/btnOptimize"
+        style="@style/LumiButton"
+        android:layout_marginTop="8dp"
+        android:text="Tắt animation hệ thống" />
+
+    <Button
+        android:id="@+id/btnGpuRender"
+        style="@style/LumiButton"
+        android:layout_marginTop="8dp"
+        android:text="Ép vẽ bằng GPU" />
+
+    <TextView style="@style/SectionTitle"
+        android:layout_marginTop="20dp"
+        android:text="MÀN HÌNH" />
+
+    <Button
+        android:id="@+id/btnBoostScreen"
+        style="@style/LumiButton"
+        android:layout_marginTop="6dp"
+        android:drawableStart="@drawable/ic_display"
+        android:drawablePadding="10dp"
+        android:text="Tối ưu tần số quét" />
+
+    <Button
+        android:id="@+id/btnDpi"
+        style="@style/LumiButton"
+        android:layout_marginTop="8dp"
+        android:text="Chỉnh DPI màn hình" />
+
+    <TextView style="@style/SectionTitle"
+        android:layout_marginTop="20dp"
+        android:text="PIN" />
+
+    <Button
+        android:id="@+id/btnBatterySaver"
+        style="@style/LumiButton"
+        android:layout_marginTop="6dp"
+        android:text="Tắt tiết kiệm pin tạm thời" />
+
+</LinearLayout>
+</ScrollView>
