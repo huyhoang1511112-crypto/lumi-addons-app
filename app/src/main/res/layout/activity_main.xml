@@ -9,142 +9,150 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="24dp">
 
-    <ImageView
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@mipmap/ic_launcher"
-        android:contentDescription="FPS Vietnamese logo" />
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
-        android:text="FPS VIETNAMESE"
-        android:textColor="@color/text_light"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:letterSpacing="0.15" />
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="2dp"
-        android:text="Đối tác sáng tạo Free Fire — tối ưu hiệu năng"
-        android:textColor="@color/text_dim"
-        android:textSize="11sp" />
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@mipmap/ic_launcher"
+            android:contentDescription="Logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="FPS VIETNAMESE"
+            android:textColor="@color/text_light"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.12" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đối tác sáng tạo Free Fire — tối ưu hiệu năng"
+            android:textColor="@color/text_dim"
+            android:textSize="11sp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="12dp"
         android:text="Trạng thái Shizuku: chưa kiểm tra"
         android:textColor="@color/text_dim"
-        android:textSize="14sp"
+        android:textSize="13sp"
         android:gravity="center" />
 
     <Button
         android:id="@+id/btnRequestPermission"
         style="@style/LumiButton"
+        android:layout_marginTop="8dp"
         android:text="Xin quyền Shizuku" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="6dp"
-        android:text="TỐI ƯU FPS — CẦN SHIZUKU"
-        android:textColor="@color/neon_pink_soft"
-        android:textSize="12sp"
-        android:letterSpacing="0.15" />
+    <TextView style="@style/SectionTitle"
+        android:layout_marginTop="20dp"
+        android:text="TỐI ƯU HIỆU NĂNG" />
 
     <Button
         android:id="@+id/btnQuickFix"
         style="@style/LumiButton"
-        android:text="⚡ Fix Lag FPS (1 chạm)" />
-
-    <Button
-        android:id="@+id/btnBoostScreen"
-        style="@style/LumiButton"
-        android:layout_marginTop="12dp"
-        android:text="📺 Buff Màn" />
-
-    <Button
-        android:id="@+id/btnCleanRam"
-        style="@style/LumiButton"
-        android:layout_marginTop="12dp"
-        android:text="🧹 Dọn RAM" />
-
-    <Button
-        android:id="@+id/btnClearCache"
-        style="@style/LumiButton"
-        android:layout_marginTop="12dp"
-        android:text="Xoá cache (chọn app)" />
-
-    <Button
-        android:id="@+id/btnOptimize"
-        style="@style/LumiButton"
-        android:layout_marginTop="12dp"
-        android:text="Tắt animation hệ thống" />
-
-    <Button
-        android:id="@+id/btnDpi"
-        style="@style/LumiButton"
-        android:layout_marginTop="12dp"
-        android:text="Chỉnh DPI màn hình" />
+        android:layout_marginTop="6dp"
+        android:drawableStart="@drawable/ic_bolt"
+        android:drawablePadding="10dp"
+        android:text="Fix Lag FPS (1 chạm)" />
 
     <Button
         android:id="@+id/btnGameMode"
         style="@style/LumiButton"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="Bật Game Mode hiệu năng" />
 
     <Button
         android:id="@+id/btnSustainedPerf"
         style="@style/LumiButton"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="Bật hiệu năng ổn định" />
 
     <Button
-        android:id="@+id/btnBatterySaver"
+        android:id="@+id/btnOptimize"
         style="@style/LumiButton"
-        android:layout_marginTop="12dp"
-        android:text="Tắt tiết kiệm pin tạm thời" />
+        android:layout_marginTop="8dp"
+        android:text="Tắt animation hệ thống" />
 
     <Button
         android:id="@+id/btnGpuRender"
         style="@style/LumiButton"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="Ép vẽ bằng GPU" />
 
-    <Button
-        android:id="@+id/btnComboBoost"
-        style="@style/LumiButton"
-        android:layout_marginTop="12dp"
-        android:text="🔥 Bật Combo Boost" />
+    <TextView style="@style/SectionTitle"
+        android:layout_marginTop="20dp"
+        android:text="MÀN HÌNH" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/btnBoostScreen"
+        style="@style/LumiButton"
+        android:layout_marginTop="6dp"
+        android:drawableStart="@drawable/ic_display"
+        android:drawablePadding="10dp"
+        android:text="Tối ưu tần số quét" />
+
+    <Button
+        android:id="@+id/btnDpi"
+        style="@style/LumiButton"
+        android:layout_marginTop="8dp"
+        android:text="Chỉnh DPI màn hình" />
+
+    <TextView style="@style/SectionTitle"
+        android:layout_marginTop="20dp"
+        android:text="GIẢI PHÓNG BỘ NHỚ" />
+
+    <Button
+        android:id="@+id/btnCleanRam"
+        style="@style/LumiButton"
+        android:layout_marginTop="6dp"
+        android:drawableStart="@drawable/ic_broom"
+        android:drawablePadding="10dp"
+        android:text="Dọn RAM" />
+
+    <Button
+        android:id="@+id/btnClearCache"
+        style="@style/LumiButton"
+        android:layout_marginTop="8dp"
+        android:text="Xoá cache (chọn app)" />
+
+    <TextView style="@style/SectionTitle"
+        android:layout_marginTop="20dp"
+        android:text="PIN" />
+
+    <Button
+        android:id="@+id/btnBatterySaver"
+        style="@style/LumiButton"
+        android:layout_marginTop="6dp"
+        android:text="Tắt tiết kiệm pin tạm thời" />
+
+    <TextView style="@style/SectionTitle"
         android:layout_marginTop="22dp"
-        android:layout_marginBottom="6dp"
-        android:text="NHẬT KÝ HOẠT ĐỘNG"
-        android:textColor="@color/neon_pink_soft"
-        android:textSize="12sp"
-        android:letterSpacing="0.2" />
+        android:text="NHẬT KÝ HOẠT ĐỘNG" />
 
     <TextView
         android:id="@+id/tvLog"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="6dp"
         android:background="@drawable/bg_log"
-        android:padding="14dp"
+        android:padding="12dp"
         android:text="Sẵn sàng."
         android:textColor="@color/text_dim"
         android:textSize="12sp"
