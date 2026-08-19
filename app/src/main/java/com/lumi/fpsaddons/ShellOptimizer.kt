@@ -52,6 +52,15 @@ object ShellOptimizer {
         return log.toString()
     }
 
+    /** Đổi DNS riêng tư (Private DNS) — lệnh chuẩn Android, y hệt vào tay Cài đặt > Mạng > DNS riêng tư */
+    fun setPrivateDns(host: String): String =
+        ShizukuHelper.runCommand(
+            "settings put global private_dns_mode hostname && settings put global private_dns_specifier $host"
+        )
+
+    fun resetPrivateDns(): String =
+        ShizukuHelper.runCommand("settings put global private_dns_mode off")
+
     fun quickFixLag(): String {
         val log = StringBuilder()
         log.appendLine("--- Tắt animation hệ thống ---")
