@@ -1,10 +1,5 @@
 package com.lumi.fpsaddons
 
-/**
- * Tổng hợp lệnh shell tối ưu hiệu năng — TẤT CẢ đều là lệnh chuẩn của Android
- * (giống hệt lệnh chạy qua "adb shell" từ máy tính), không phải hack/exploit.
- * Toàn bộ đều an toàn, có thể hoàn tác, không đụng dữ liệu người dùng.
- */
 object ShellOptimizer {
 
     private const val FREE_FIRE_PKG = "com.dts.freefireth"
@@ -40,6 +35,23 @@ object ShellOptimizer {
             "settings delete system peak_refresh_rate && settings delete system min_refresh_rate"
         )
 
+    /** Pointer speed: -7 (chậm nhất) đến 7 (nhanh nhất). Tăng nhẹ giúp thao tác mượt hơn. */
+    fun setPointerSpeed(speed: Int = 5): String =
+        ShizukuHelper.runCommand("settings put system pointer_speed $speed")
+
+    fun resetPointerSpeed(): String =
+        ShizukuHelper.runCommand("settings put system pointer_speed 0")
+
+    /** "Tối ưu tần số quét" — gộp buff refresh rate + tăng pointer speed cho mượt tay. */
+    fun optimizeScreen(rate: Float = 120f, pointerSpeed: Int = 5): String {
+        val log = StringBuilder()
+        log.appendLine("--- Tối ưu tần số quét ---")
+        log.appendLine(boostRefreshRate(rate))
+        log.appendLine("--- Tăng tốc độ con trỏ (point speed) ---")
+        log.appendLine(setPointerSpeed(pointerSpeed))
+        return log.toString()
+    }
+
     fun quickFixLag(): String {
         val log = StringBuilder()
         log.appendLine("--- Tắt animation hệ thống ---")
@@ -53,30 +65,6 @@ object ShellOptimizer {
         log.appendLine("--- Ép vẽ bằng GPU ---")
         log.appendLine(forceGpuRendering())
         log.appendLine("=== HOÀN TẤT FIX LAG FPS ===")
-        return log.toString()
-    }
-
-    fun startComboBoost(
-        refreshRate: Float = 120f,
-        touchPoints: List<AntiGhostTouch.TapPoint>,
-        touchIntervalMs: Long = 3000,
-        scope: kotlinx.coroutines.CoroutineScope
-    ): String {
-        val log = StringBuilder()
-        log.appendLine("--- Buff tần số quét màn hình ---")
-        log.appendLine(boostRefreshRate(refreshRate))
-        log.appendLine("--- Bật chống liệt cảm ứng ---")
-        AntiGhostTouch.start(touchPoints, touchIntervalMs, scope)
-        log.appendLine("Đã bật.")
-        return log.toString()
-    }
-
-    fun stopComboBoost(): String {
-        val log = StringBuilder()
-        log.appendLine("--- Tắt chống liệt cảm ứng ---")
-        AntiGhostTouch.stop()
-        log.appendLine("--- Trả tần số quét về mặc định ---")
-        log.appendLine(resetRefreshRate())
         return log.toString()
     }
 }
