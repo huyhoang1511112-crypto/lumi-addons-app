@@ -27,7 +27,8 @@ class HomeFragment : Fragment(), Refreshable {
 
         featureButtons = listOf(
             R.id.btnQuickFix, R.id.btnBoostScreen, R.id.btnOptimize, R.id.btnDpi,
-            R.id.btnGameMode, R.id.btnSustainedPerf, R.id.btnBatterySaver, R.id.btnGpuRender
+            R.id.btnGameMode, R.id.btnSustainedPerf, R.id.btnBatterySaver, R.id.btnGpuRender,
+            R.id.btnDnsCloudflare, R.id.btnDnsGoogle, R.id.btnDnsReset
         ).map { view.findViewById<Button>(it) }
 
         view.findViewById<Button>(R.id.btnRequestPermission).setOnClickListener {
@@ -67,6 +68,18 @@ class HomeFragment : Fragment(), Refreshable {
 
         view.findViewById<Button>(R.id.btnGpuRender).setOnClickListener {
             LogManager.log(ShellOptimizer.forceGpuRendering())
+        }
+
+        view.findViewById<Button>(R.id.btnDnsCloudflare).setOnClickListener {
+            LogManager.log(ShellOptimizer.setPrivateDns("1.1.1.1"))
+        }
+
+        view.findViewById<Button>(R.id.btnDnsGoogle).setOnClickListener {
+            LogManager.log(ShellOptimizer.setPrivateDns("8.8.8.8"))
+        }
+
+        view.findViewById<Button>(R.id.btnDnsReset).setOnClickListener {
+            LogManager.log(ShellOptimizer.resetPrivateDns())
         }
 
         return view
