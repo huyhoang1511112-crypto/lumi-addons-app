@@ -34,4 +34,13 @@
         <item name="android:elevation">0dp</item>
     </style>
 
+    <style name="SectionTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/neon_pink_soft</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0.15</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
 </resources>
