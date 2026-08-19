@@ -82,6 +82,28 @@
 
     <TextView style="@style/SectionTitle"
         android:layout_marginTop="20dp"
+        android:text="MẠNG" />
+
+    <Button
+        android:id="@+id/btnDnsCloudflare"
+        style="@style/LumiButton"
+        android:layout_marginTop="6dp"
+        android:text="Đổi DNS Cloudflare (1.1.1.1)" />
+
+    <Button
+        android:id="@+id/btnDnsGoogle"
+        style="@style/LumiButton"
+        android:layout_marginTop="8dp"
+        android:text="Đổi DNS Google (8.8.8.8)" />
+
+    <Button
+        android:id="@+id/btnDnsReset"
+        style="@style/LumiButton"
+        android:layout_marginTop="8dp"
+        android:text="Trả về DNS mặc định" />
+
+    <TextView style="@style/SectionTitle"
+        android:layout_marginTop="20dp"
         android:text="PIN" />
 
     <Button
