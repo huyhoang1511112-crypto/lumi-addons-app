@@ -35,14 +35,12 @@ object ShellOptimizer {
             "settings delete system peak_refresh_rate && settings delete system min_refresh_rate"
         )
 
-    /** Pointer speed: -7 (chậm nhất) đến 7 (nhanh nhất). Tăng nhẹ giúp thao tác mượt hơn. */
     fun setPointerSpeed(speed: Int = 5): String =
         ShizukuHelper.runCommand("settings put system pointer_speed $speed")
 
     fun resetPointerSpeed(): String =
         ShizukuHelper.runCommand("settings put system pointer_speed 0")
 
-    /** "Tối ưu tần số quét" — gộp buff refresh rate + tăng pointer speed cho mượt tay. */
     fun optimizeScreen(rate: Float = 120f, pointerSpeed: Int = 5): String {
         val log = StringBuilder()
         log.appendLine("--- Tối ưu tần số quét ---")
@@ -52,7 +50,6 @@ object ShellOptimizer {
         return log.toString()
     }
 
-    /** Đổi DNS riêng tư (Private DNS) — lệnh chuẩn Android, y hệt vào tay Cài đặt > Mạng > DNS riêng tư */
     fun setPrivateDns(host: String): String =
         ShizukuHelper.runCommand(
             "settings put global private_dns_mode hostname && settings put global private_dns_specifier $host"
@@ -60,6 +57,16 @@ object ShellOptimizer {
 
     fun resetPrivateDns(): String =
         ShizukuHelper.runCommand("settings put global private_dns_mode off")
+
+    /** Đổi độ phân giải màn hình — lệnh "wm size", giảm tải GPU khi chơi game nặng */
+    fun setResolution(width: Int, height: Int): String =
+        ShizukuHelper.runCommand("wm size ${width}x${height}")
+
+    fun resetResolution(): String =
+        ShizukuHelper.runCommand("wm size reset")
+
+    fun getCurrentResolution(): String =
+        ShizukuHelper.runCommand("wm size")
 
     fun quickFixLag(): String {
         val log = StringBuilder()
