@@ -28,7 +28,7 @@ class HomeFragment : Fragment(), Refreshable {
         featureButtons = listOf(
             R.id.btnQuickFix, R.id.btnBoostScreen, R.id.btnOptimize, R.id.btnDpi,
             R.id.btnGameMode, R.id.btnSustainedPerf, R.id.btnBatterySaver, R.id.btnGpuRender,
-            R.id.btnDnsCloudflare, R.id.btnDnsGoogle, R.id.btnDnsReset
+            R.id.btnDnsCloudflare, R.id.btnDnsGoogle, R.id.btnDnsReset, R.id.btnResolution
         ).map { view.findViewById<Button>(it) }
 
         view.findViewById<Button>(R.id.btnRequestPermission).setOnClickListener {
@@ -53,6 +53,8 @@ class HomeFragment : Fragment(), Refreshable {
         }
 
         view.findViewById<Button>(R.id.btnDpi).setOnClickListener { showDpiDialog() }
+
+        view.findViewById<Button>(R.id.btnResolution).setOnClickListener { showResolutionDialog() }
 
         view.findViewById<Button>(R.id.btnGameMode).setOnClickListener {
             LogManager.log(ShellOptimizer.enableGamePerformanceMode())
@@ -130,6 +132,33 @@ class HomeFragment : Fragment(), Refreshable {
                 }
             }
             .setNeutralButton("Đặt lại mặc định") { _, _ -> LogManager.log(DpiHelper.resetDensity()) }
+            .setNegativeButton("Huỷ", null)
+            .show()
+    }
+
+    private fun showResolutionDialog() {
+        val current = ShizukuHelper.runCommand("wm size")
+
+        val options = arrayOf(
+            "Mặc định (không đổi)",
+            "1600x900 — nhẹ, giữ nét",
+            "1280x720 (HD) — nhẹ hơn, tăng FPS rõ",
+            "960x540 — nhẹ nhất, giảm chất lượng hình rõ"
+        )
+        val resolutions = arrayOf(null, "1600x900", "1280x720", "960x540")
+
+        AlertDialog.Builder(requireContext(), R.style.LumiDialogTheme)
+            .setTitle("Hạ độ phân giải màn hình")
+            .setMessage("Hiện tại: $current\n\nĐộ phân giải càng thấp, GPU càng ít việc → FPS tăng, nhưng hình ảnh mờ/nhỏ hơn. Có thể trả lại mặc định bất cứ lúc nào.")
+            .setItems(options) { _, which ->
+                val res = resolutions[which]
+                if (res == null) {
+                    LogManager.log(ShellOptimizer.resetResolution())
+                } else {
+                    val (w, h) = res.split("x").map { it.toInt() }
+                    LogManager.log(ShellOptimizer.setResolution(w, h))
+                }
+            }
             .setNegativeButton("Huỷ", null)
             .show()
     }
