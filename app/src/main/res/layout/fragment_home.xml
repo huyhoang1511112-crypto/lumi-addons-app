@@ -80,6 +80,12 @@
         android:layout_marginTop="8dp"
         android:text="Chỉnh DPI màn hình" />
 
+    <Button
+        android:id="@+id/btnResolution"
+        style="@style/LumiButton"
+        android:layout_marginTop="8dp"
+        android:text="Hạ độ phân giải (tăng FPS)" />
+
     <TextView style="@style/SectionTitle"
         android:layout_marginTop="20dp"
         android:text="MẠNG" />
